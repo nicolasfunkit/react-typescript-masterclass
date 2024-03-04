@@ -47,6 +47,7 @@ describe("CheckoutForm", () => {
         });
 
         fireEvent.click(getByText("Place order"));
+        //@todo : correct test
         // await waitFor(() => {
         //   expect(mockSubmit).toHaveBeenCalled();
         //   console.log(container.innerHTML);
