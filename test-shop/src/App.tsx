@@ -4,6 +4,7 @@ import { Home } from "./Home"
 import { Cart } from "./Cart"
 import { Header } from "./shared/Header"
 import { OrderSummary } from "./OrderSummary"
+import { PageNotFound } from "./PageNotFound"
 
 
 export const App = () => {
@@ -16,7 +17,7 @@ export const App = () => {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/order" element={<OrderSummary />} />
-          <Route>Page not found</Route>
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </div>
     </>
