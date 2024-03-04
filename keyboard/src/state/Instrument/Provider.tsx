@@ -1,8 +1,12 @@
-import { FunctionComponent, useState } from "react"
+import { FunctionComponent, ReactNode, useState } from "react"
 import { DEFAULT_INSTRUMENT } from "../../domain/sound"
 import { InstrumentContext } from "./Context"
 
-export const InstrumentContextProvider: FunctionComponent = ({
+interface InstrumentContextProviderProps {
+  children: ReactNode; // Définir explicitement 'children' comme étant de type ReactNode
+}
+
+export const InstrumentContextProvider: FunctionComponent<InstrumentContextProviderProps> = ({
   children
 }) => {
   const [instrument, setInstrument] = useState(DEFAULT_INSTRUMENT)
