@@ -75,7 +75,7 @@ export const CheckoutForm = ({
         registerOptions={register("cvv")}
         errors={errors.cvv}
         normalize={(value) => {
-          return value.substring(0, 2)
+          return value.substring(0, 3)
         }}
       />
       <button className="nes-btn is-primary">Place order</button>
