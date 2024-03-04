@@ -40,7 +40,6 @@ describe("routing", () => {
     const { container } = renderWithRouter(<App />, {
       route: "/this-route-does-not-exist",
     });
-    console.log(container.innerHTML)
     expect(container.innerHTML).toMatch("Page not found");
   });
 });
