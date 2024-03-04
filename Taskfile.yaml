@@ -1,0 +1,28 @@
+# https://taskfile.dev
+# Run in devcontainer
+version: "3"
+
+silent: true
+
+env:
+  DCRUN: docker compose run --rm
+
+tasks:
+  default:
+    cmds:
+      - task --list
+
+  app:up:
+    desc: Launch mandatory commands for the app to be up&ready
+    status:
+      - /bin/bash -c "[[ -z \"${CI}\" ]] && exit 1 || exit 0"
+    cmds:
+      - echo "COUCOU"
+
+  app:run:
+    desc: Run
+    dir: './discogs/'
+    status:
+      - /bin/bash -c "[[ -z \"${CI}\" ]] && exit 1 || exit 0"
+    cmds:
+      - npm run dev
