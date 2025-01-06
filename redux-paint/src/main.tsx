@@ -4,11 +4,14 @@ import App from "./App.tsx";
 import "./index.css";
 import { Provider } from "react-redux";
 import { store } from "./store.ts";
+import { CanvasProvider } from "./CanvasContext.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <CanvasProvider>
+        <App />
+      </CanvasProvider>
     </Provider>
   </React.StrictMode>
 );

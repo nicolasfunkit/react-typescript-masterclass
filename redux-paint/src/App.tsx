@@ -1,25 +1,49 @@
-import { MouseEvent, useEffect, useRef } from "react";
+import { MouseEvent, useEffect } from "react";
 import { clearCanvas, drawStroke, setCanvasSize } from "./utils/canvasUtils";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { beginStroke, endStroke, updateStroke } from "./actions";
-import { currentStrokeSelector } from "./rootReducer";
+import {
+  beginStroke,
+  endStroke,
+  updateStroke,
+} from "./modules/currentStroke/actions";
+import { strokesSelector } from "./modules/strokes/reducer";
+import { currentStrokeSelector } from "./modules/currentStroke/reducer";
+import { historyIndexSelector } from "./modules/historyIndex/reducer";
 import { ColorPanel } from "./shared/ColorPanel";
+import { EditPanel } from "./shared/EditPanel";
+import { useCanvas } from "./CanvasContext";
+import { FilePanel } from "./shared/FilePanel";
 
 const WIDTH = 1024;
 const HEIGHT = 768;
 
 function App() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const currentStroke = useSelector(currentStrokeSelector);
-
+  const canvasRef = useCanvas();
   const getCanvasWithContext = (canvas = canvasRef.current) => {
     return { canvas, context: canvas?.getContext("2d") };
   };
 
+  const currentStroke = useSelector(currentStrokeSelector);
+  const historyIndex = useSelector(historyIndexSelector);
+  const strokes = useSelector(strokesSelector);
   const isDrawing = !!currentStroke.points.length;
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const { canvas, context } = getCanvasWithContext();
+    if (!context || !canvas) {
+      return;
+    }
+    requestAnimationFrame(() => {
+      clearCanvas(canvas);
+
+      strokes
+        .slice(0, strokes.length - historyIndex)
+        .forEach((stroke) => drawStroke(context, stroke.points, stroke.color));
+    });
+  }, [historyIndex]);
 
   useEffect(() => {
     const { canvas, context } = getCanvasWithContext();
@@ -61,7 +85,7 @@ function App() {
 
   const endDrawing = () => {
     if (isDrawing) {
-      dispatch(endStroke());
+      dispatch(endStroke(historyIndex, currentStroke));
     }
   };
 
@@ -73,7 +97,9 @@ function App() {
           <button aria-label="Close" />
         </div>
       </div>
+      <EditPanel />
       <ColorPanel />
+      <FilePanel />
       <canvas
         ref={canvasRef}
         onMouseDown={startDrawing}
