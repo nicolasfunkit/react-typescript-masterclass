@@ -1,7 +1,6 @@
-import React, { MouseEvent, useEffect, useRef } from "react";
+import { MouseEvent, useEffect, useRef } from "react";
 import { clearCanvas, drawStroke, setCanvasSize } from "./utils/canvasUtils";
 import { useSelector } from "react-redux";
-import { RootState } from "./utils/types";
 import { useDispatch } from "react-redux";
 import { beginStroke, endStroke, updateStroke } from "./actions";
 import { currentStrokeSelector } from "./rootReducer";
