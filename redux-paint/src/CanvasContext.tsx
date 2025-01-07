@@ -1,9 +1,8 @@
-import {
+import React, {
   createContext,
-  RefObject,
   PropsWithChildren,
-  FC,
   useRef,
+  RefObject,
   useContext,
 } from "react";
 
@@ -11,7 +10,7 @@ export const CanvasContext = createContext<RefObject<HTMLCanvasElement>>(
   {} as RefObject<HTMLCanvasElement>
 );
 
-export const CanvasProvider: FC<PropsWithChildren> = ({ children }) => {
+export const CanvasProvider = ({ children }: PropsWithChildren<{}>) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   return (
