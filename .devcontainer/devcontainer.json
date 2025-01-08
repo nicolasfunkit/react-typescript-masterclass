@@ -12,7 +12,6 @@
 		"ghcr.io/devcontainers-contrib/features/go-task:1": {},
 		"ghcr.io/devcontainers-contrib/features/typescript:2": {}
 	},
-
 	// Configure tool-specific properties.
 	"customizations": {
 		// Configure properties specific to VS Code.
@@ -20,23 +19,22 @@
 			// Set *default* container specific settings.json values on container create.
 			"settings": {
 				"html.format.templating": true,
-                "license-header-manager.excludeExtensions": [
-                    ".sh",
-                    ".xml",
-                    ".html"
-                ],
-                "license-header-manager.excludeFolders": [
-                    "node_modules",
-                    "plugins",
-                    "assets"
-                ],
-                "editor.tabCompletion": "on",
-                "eslint.alwaysShowStatus": true,
-                "eslint.lintTask.enable": true,
-                "eslint.useESLintClass": true,
-                "jest.jestCommandLine": "npm run test --"
+				"license-header-manager.excludeExtensions": [
+					".sh",
+					".xml",
+					".html"
+				],
+				"license-header-manager.excludeFolders": [
+					"node_modules",
+					"plugins",
+					"assets"
+				],
+				"editor.tabCompletion": "on",
+				"eslint.alwaysShowStatus": true,
+				"eslint.lintTask.enable": true,
+				"eslint.useESLintClass": true,
+				"jest.jestCommandLine": "npm run test --"
 			},
-
 			// Add the IDs of extensions you want installed when the container is created.
 			"extensions": [
 				"bierner.markdown-footnotes",
@@ -71,16 +69,13 @@
 			]
 		}
 	},
-
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [
 		5173
 	],
 	// Use `updateContentCommand` to run commands in the prebuild
-
 	// Use 'postCreateCommand' to run commands after the container is created.
-    "postCreateCommand": "task app:up",
-
+	"postCreateCommand": "task app:up",
 	// Set `remoteUser` to `root` to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
 	"remoteUser": "node"
 }

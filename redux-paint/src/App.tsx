@@ -48,7 +48,7 @@ function App() {
         drawStroke(context, stroke.points, stroke.color);
       });
     });
-  }, [historyIndex]);
+  }, [historyIndex, strokes]);
 
   useEffect(() => {
     const { canvas, context } = getCanvasWithContext();
