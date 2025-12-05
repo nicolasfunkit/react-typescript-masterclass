@@ -1,0 +1,34 @@
+image: 
+  name: denoland/deno:1.26.0
+  entrypoint: [ "" ]
+
+lint-and-format-check:
+  stage: test
+  script:
+    - deno fmt --check
+    - deno lint
+  only:
+    - main
+
+build:
+  image: docker:latest
+  stage: build
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD"
+  script:
+    - cp $ENV_FILE .env
+    - docker build --pull -t "$CI_REGISTRY_USER/quacker:latest" .
+    - docker push "$CI_REGISTRY_USER/quacker"
+  only:
+    - main
+
+deploy:
+  stage: deploy
+  script:
+    - ssh -i $SSH_KEY -t ci@$SSH_IP 'docker run --pull -it --network db ${{ secrets.DOCKERHUB_USERNAME }}/quacker make migrate'
+    - ssh -i $SSH_KEY -t ci@$SSH_IP 'docker kill quacker'
+    - ssh -i $SSH_KEY -t ci@$SSH_IP 'docker run --pull -d --name --restart always --rm --network db -p 80:80 ${{ secrets.DOCKERHUB_USERNAME }}/quacker'
+  only:
+    - main

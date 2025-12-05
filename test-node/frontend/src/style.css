@@ -1,0 +1,42 @@
+.window {
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+}
+
+.window-header {
+  background: #f0f0f0;
+  padding: 8px;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.window-content {
+  padding: 16px;
+}
+
+.window-buttons {
+  display: flex;
+  gap: 6px;
+}
+
+.window-button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+}
+
+.close {
+  background: #ff5f56;
+}
+.minimize {
+  background: #ffbd2e;
+}
+.maximize {
+  background: #27c93f;
+}

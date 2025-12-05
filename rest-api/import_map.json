@@ -1,0 +1,12 @@
+{
+  "imports": {
+    "oak": "https://deno.land/x/oak@v11.1.0/mod.ts",
+    "dotenv": "https://deno.land/std@0.155.0/dotenv/mod.ts",
+    "postgres": "https://deno.land/x/postgres@v0.16.1/mod.ts",
+    "nessie": "https://deno.land/x/nessie@2.0.7/mod.ts",
+    "nessiecli": "https://deno.land/x/nessie@2.0.7/cli.ts",
+    "cuid": "https://deno.land/x/cuid@v1.0.0/index.js",
+    "bcrypt": "https://deno.land/x/bcrypt@v0.4.0/mod.ts",
+    "jose": "https://deno.land/x/jose@v4.10.0/index.ts"
+  }
+}

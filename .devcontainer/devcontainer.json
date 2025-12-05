@@ -10,7 +10,9 @@
 		"ghcr.io/devcontainers/features/node:1": {},
 		"ghcr.io/devcontainers/features/docker-in-docker:2": {},
 		"ghcr.io/devcontainers-contrib/features/go-task:1": {},
-		"ghcr.io/devcontainers-contrib/features/typescript:2": {}
+		"ghcr.io/devcontainers-contrib/features/typescript:2": {},
+		"ghcr.io/devcontainers-extra/features/deno-asdf:2": {},
+		"ghcr.io/devcontainers/features/azure-cli:1": {}
 	},
 	// Configure tool-specific properties.
 	"customizations": {
@@ -65,7 +67,8 @@
 				"piotrpalarz.vscode-gitignore-generator",
 				"vitest.explorer",
 				"antfu.vite",
-				"styled-components.vscode-styled-components"
+				"styled-components.vscode-styled-components",
+				"ritwickdey.LiveServer"
 			]
 		}
 	},

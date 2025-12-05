@@ -1,0 +1,9 @@
+{
+  "importMap": "./import_map.json",
+  "tasks": {
+    "start": "deno run --unstable --allow-sys --allow-net --allow-read --allow-env main.ts",
+    "dev": "deno run --watch --unstable --allow-sys --allow-net --allow-read --allow-env main.ts",
+    "migrate": "deno run -A -c deno.jsonc --unstable https://deno.land/x/nessie@2.0.7/cli.ts migrate",
+    "rollback": "deno run -A -c deno.jsonc --unstable https://deno.land/x/nessie@2.0.7/cli.ts rollback"
+  }
+}
